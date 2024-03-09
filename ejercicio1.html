@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <div>
+        <div style="width: 40%;margin: 0 auto">
+            <h2>
+                Escríbenos !!!
+            </h2>
+            <div class="resultado" style="color:green;font-style: italic">
+            </div>
+            <form id="formulario">
+                <div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Nombre completo
+                        </label>
+                        <input id="nombre" type="text">
+                        <p class="errorNombre" style="color:red;font-style: italic;"></p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Asunto
+                        </label>
+                        <input id="asunto" type="text">
+                        <p class="errorAsunto" style="color:red;font-style: italic;"></p>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <label>
+                        Mensaje
+                    </label>
+                    <textarea id="mensaje"></textarea>
+                    <p class="errorMensaje" style="color:red;font-style: italic;"></p>
+                </div>
+                <div>
+                    <button id="botton" type="submit">
+                        Envíar mensaje
+                    </button>
+                </div>
+            </form>
+        </div>
+    <script>
+        document.getElementById("formulario").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    var nombreInput = document.getElementById("nombre").value;
+    var asuntoInput = document.getElementById("asunto").value;
+    var mensajeInput = document.getElementById("mensaje").value;
+
+
+    var regex = /^[A-Za-z]+$/
+
+    //Validación del nombre
+    if (!regex.test(nombreInput)) {
+        document.querySelector(".errorNombre").innerHTML = "Por favor ingresa solo caracteres alfabéticos de la A a la Z.";
+    } else {
+        document.querySelector(".errorNombre").innerHTML = "";
+    }
+    //Validacion del asunto
+    if (!regex.test(asuntoInput)) {
+        document.querySelector(".errorAsunto").innerHTML = "Por favor ingresa solo caracteres alfabéticos de la A a la Z.";
+    } else {
+        document.querySelector(".errorAsunto").innerHTML = "";
+    }
+    //Validacion del mensaje
+    if (!regex.test(mensajeInput)) {
+        document.querySelector(".errorMensaje").innerHTML = "Por favor ingresa solo caracteres alfabéticos de la A a la Z.";
+    } else {
+        document.querySelector(".errorMensaje").innerHTML = "";
+    }
+
+
+    // Si todos los campos son válidos, se envía el mensaje
+    if (regex.test(nombreInput) && regex.test(asuntoInput)  && regex.test(mensajeInput) ) {
+        document.querySelector(".resultado").innerHTML = "¡Mensaje enviado correctamente!";
+    }
+})
+    </script>
+</body>
+
+</html>
